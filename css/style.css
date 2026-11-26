@@ -1708,6 +1708,7 @@ footer p {
     justify-content: center;
     font-weight: bold;
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 .social-arrow {
@@ -1748,6 +1749,7 @@ footer p {
 
 .form-group input,
 .form-group textarea {
+    display: block;
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #E8D8E7;

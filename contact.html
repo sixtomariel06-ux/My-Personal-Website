@@ -118,29 +118,32 @@
                     <p>I'd love to hear from you. Send me a message!</p>
                 </div>
 
-                <form action="mailto:sixtomariel06@gmail.com" method="post" enctype="text/plain">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="Name" placeholder="Enter your name" required>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="Email" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     </div>
 
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="Subject" placeholder="Enter the subject" required>
+                        <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="Message" rows="5" placeholder="Write your message here..." required></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
                     </div>
 
                     <button type="submit" class="contact-button">Send Message ♡</button>
-                    <p class="form-note">Clicking Send Message will open your email app so you can send your message.</p>
+
+                    <p class="form-note">
+                        Clicking Send Message will open your email app.
+                    </p>
                 </form>
             </div>
 
@@ -160,6 +163,34 @@
         <p>© 2026 Mariel. All Rights Reserved.</p>
         <p>Made with ♡</p>
     </footer>
+
+    <script>
+        const contactForm = document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            const recipient = "sixtomariel06@gmail.com";
+
+            const emailSubject = encodeURIComponent(subject);
+            const emailBody = encodeURIComponent(
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n\n" +
+                "Message:\n" + message
+            );
+
+            const mailtoLink = "mailto:" + recipient +
+                "?subject=" + emailSubject +
+                "&body=" + emailBody;
+
+            window.location.href = mailtoLink;
+        });
+    </script>
 
 </body>
 </html>
